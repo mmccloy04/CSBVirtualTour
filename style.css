@@ -6,19 +6,11 @@ colors, and handle the layout for our footer and "Remix on Glitch" button. If
 you're new to CSS they may seem a little complicated, but you can scroll down
 to this section's matching END comment to see page-specific styles.
 ******************************************************************************/
-
-
-/* 
-  The style rules specify elements by type and by attributes such as class and ID
-  Each section indicates an element or elements, then lists the style properties to apply
-  See if you can cross-reference the rules in this file with the elements in index.html
-*/
-
 /* Our default values set as CSS variables */
 :root {
-  --color-bg: #69F7BE;
+  --color-bg: #FFE6F8;
   --color-text-main: #000000;
-  --color-primary: #FFFF00;
+  --color-primary: #D7F5EF;
   --wrapper-height: 87vh;
   --image-max-width: 300px;
   --image-margin: 3rem;
@@ -66,10 +58,10 @@ to this section's matching END comment to see page-specific styles.
   white-space: nowrap;
   margin-left: auto;
 }
-.btn--one img {
+.btn--remix img {
   margin-right: 0.5rem;
 }
-.btn--one:hover {
+.btn--remix:hover {
   background-color: #D0FFF1;
 }
 
@@ -84,8 +76,8 @@ to this section's matching END comment to see page-specific styles.
   border-top: 4px solid #fff;
 }
 
-.footer a:not(.btn--one):link,
-a:not(.btn--one):visited {
+.footer a:not(.btn--remix):link,
+a:not(.btn--remix):visited {
   font-family: HK Grotesk;
   font-style: normal;
   font-weight: normal;
@@ -125,34 +117,49 @@ body {
 .content {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  align-items: left;
+  justify-content: left;
+  max-width: 600px;
 }
 
-/* Very light scaling for our illustration */
-.title {
+p,
+label {
+  font-size: 1.25rem;
+}
+
+/* Title h1 style */
+h1 {
   color: #2800FF;
   font-family: HK Grotesk;
   font-style: normal;
   font-weight: bold;
   font-size: 100px;
   line-height: 105%;
-  margin: 0;
+  margin: 2rem 0 0;
 }
 
 /* Very light scaling for our illustration */
+.illo-container {
+  display: flex;
+  justify-content: flex-end;
+}
 .illustration {
   max-width: 100%;
-  max-height: var(--image-max-width);
-  margin-top: var(--image-margin);
+  max-height: 150px;
+  margin-top: 1rem;
 }
 
-/* Instructions */
-.instructions {
-  margin: 1rem auto 0;
+/* Styles for our poll form and its results */
+.poll-form,
+.poll-results {
+  background-color: #FFF3FC;
+  padding: 0 16px 16px 16px;
+  border-radius: 8px;
 }
-
-/* Button - Add it from the README instructions */
+.poll-form button:hover {
+  cursor: pointer;
+  box-shadow: -8px 4px 20px var(--color-primary);
+}
 button,
 input {
   font-family: inherit;
@@ -162,34 +169,46 @@ input {
   box-sizing: border-box;
   border-radius: 4px;
   padding: 0.5rem 1rem;
-  transition: 500ms;
+}
+button {
+  cursor: pointer;
+}
+label {
+  color: #000000;
+  font-weight: bold;
 }
 
-/* Subheading */
+/* Instructions */
+.instructions {
+  margin: 1rem auto 0;
+}
+.instructions p {
+  font-size: 1rem;
+}
 h2 {
   color: #2800FF;
 }
 
-/* Interactive image */
-.illustration:active {
-  transform: translateY(5px);
+/* Admin page */
+table {
+  text-align: left;
+  border-collapse: collapse;
+  background-color: #FFF3FC;
 }
-
-/* Button dip
-- Toggling this class on and off will move it down and up again
-- The button transition property above determines the speed of the translate (500ms)
-*/
-.dipped {
-  transform: translateY(5px);
+td,
+th {
+  border: 2px solid #FFFFFF;
+  padding: 0.5rem;
 }
-
-/* Links that open files in the editor */
-.fileopener {
-  cursor:pointer;
-  font-weight:bold;
-  border-bottom:3px solid var(--color-primary);
-  color: var(--color-secondary);
+p a {
+  text-decoration: none;
+  font-weight: bold;
 }
-.fileopener:hover {
-  border-bottom:3px solid var(--color-secondary);
+p.error,
+p.error a:link,
+p.error a:visited {
+  color: #2800FF;
+}
+.results {
+  padding-top:10px;
 }
