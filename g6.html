@@ -14,23 +14,22 @@
   <body>
 
     <a-scene>
-      <a-camera id="myCamera">
+      <!--adding cursor to screen-->
+      <a-camera position="1 1 0" id="myCamera">
         <a-cursor intersection-spawn="Event: click; mixin;voxel;" colour="red"> 
         </a-cursor>
       </a-camera>
       
       <!--background-->
-      <a-sky src="https://cdn.glitch.global/0ecceb09-097f-4efc-83ce-6923956c956e/003_mainfoyer_bydoor.jpg?v=1698966152686" rotation="0 -130 0"></a-sky>
+      <a-sky src="https://cdn.glitch.global/0ecceb09-097f-4efc-83ce-6923956c956e/021_foyertoilets_doorclosed_doortolab.jpg?v=1698966414094" rotation="0 -130 0"></a-sky>
       
       <!--Spheres with other locations-->
-
-      <a-sphere id="o1" src="https://cdn.glitch.global/0ecceb09-097f-4efc-83ce-6923956c956e/074_topofsteps_somepeople.jpg?v=1698964827198" position="-10.5 2 5"></a-sphere>
-      <a-sphere id="g2" src="" position="3 1 12"></a-sphere>
-      <a-sphere id="g3" src="https://cdn.glitch.global/0ecceb09-097f-4efc-83ce-6923956c956e/002_mainfoyer_empty.jpg?v=1698966397137" position="8 2 -15"></a-sphere>
-      <a-sphere id="g5" src="https://cdn.glitch.global/0ecceb09-097f-4efc-83ce-6923956c956e/017_foyer_carpeted_empty.jpg?v=1698966406251" position="-5.5 2 -13"></a-sphere>
-      <!--<a-sphere id="m1" src="https://cdn.glitch.global/0ecceb09-097f-4efc-83ce-6923956c956e/053_stairs_groundtofirst.jpg?v=1699107171210" position="5 1 -25"></a-sphere>-->
+      <a-sphere id="c1" src="https://cdn.glitch.global/0ecceb09-097f-4efc-83ce-6923956c956e/034_corridor_techniciansdesk.jpg?v=1698967209660" position="-5 2 3"></a-sphere>
+      <a-sphere id="c2" src="https://cdn.glitch.global/0ecceb09-097f-4efc-83ce-6923956c956e/019_computerlab_empty.jpg?v=1698968671284" position="6 2 7"></a-sphere>
+      <a-sphere id="g3" src="https://cdn.glitch.global/0ecceb09-097f-4efc-83ce-6923956c956e/002_mainfoyer_empty.jpg?v=1698966397137" position="11 2 -10"></a-sphere>
+      <a-sphere id="g5" src="https://cdn.glitch.global/0ecceb09-097f-4efc-83ce-6923956c956e/017_foyer_carpeted_empty.jpg?v=1698966406251" position="15 2 2"></a-sphere>
+      <a-sphere id="l1" src="https://cdn.glitch.global/0ecceb09-097f-4efc-83ce-6923956c956e/045_insidelift_doorcsclosed.jpg?v=1699107055316" position="7 2 -11"></a-sphere>
     
-
       
       <a-light type="ambient" color="#666"></a-light>
       <a-light type="point" intensity="" position="2 4 4"></a-light>
@@ -42,15 +41,15 @@
   <script>
     <!-- Reference Video 3-->
     document
-      .querySelector("#o1")
+      .querySelector("#c1")
       .addEventListener("mouseenter", e => {
-        location.href = "o1.html";
+        location.href = "c1.html";
     });
     
     document
-      .querySelector("#g2")
+      .querySelector("#c2")
       .addEventListener("mouseenter", e => {
-        location.href = "g2.html";
+        location.href = "c2.html";
     });
     
     document
@@ -64,11 +63,12 @@
       .addEventListener("mouseenter", e => {
         location.href = "g5.html";
     });
-    
-    
-
-    
-
+       
+    document
+      .querySelector("#l1")
+      .addEventListener("mouseenter", e => {
+        location.href = "l1.html";
+    });
     
   </script>
     

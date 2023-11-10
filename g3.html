@@ -21,11 +21,14 @@
       </a-camera>
       
       <!--background-->
-      <a-sky src="" rotation="0 -130 0"></a-sky>
+      <a-sky src="https://cdn.glitch.global/0ecceb09-097f-4efc-83ce-6923956c956e/002_mainfoyer_empty.jpg?v=1698966397137" rotation="0 -130 0"></a-sky>
       
       <!--Spheres with other locations-->
-      <a-sphere id="o1" src="https://cdn.glitch.global/0ecceb09-097f-4efc-83ce-6923956c956e/o1.jpg?v=1698246807420" position="-7 2 0"></a-sphere>
-      <a-sphere id="o3" src="" position="-3.5 2 -3"></a-sphere>
+      <a-sphere id="g1" src="https://cdn.glitch.global/0ecceb09-097f-4efc-83ce-6923956c956e/003_mainfoyer_bydoor.jpg?v=1698966152686" position="-7 2 8"></a-sphere>
+      <a-sphere id="g5" src="https://cdn.glitch.global/0ecceb09-097f-4efc-83ce-6923956c956e/017_foyer_carpeted_empty.jpg?v=1698966406251" position="-10 2 -3"></a-sphere>
+      <a-sphere id="g6" src="https://cdn.glitch.global/0ecceb09-097f-4efc-83ce-6923956c956e/021_foyertoilets_doorclosed_doortolab.jpg?v=1698966414094" position="-6 2 -15"></a-sphere>
+      <a-sphere id="m1" src="https://cdn.glitch.global/0ecceb09-097f-4efc-83ce-6923956c956e/053_stairs_groundtofirst.jpg?v=1699107171210" position="5.5 4.8 -14"></a-sphere>
+      <a-sphere id="l1" src="https://cdn.glitch.global/0ecceb09-097f-4efc-83ce-6923956c956e/045_insidelift_doorcsclosed.jpg?v=1699107055316" position="-3 2 -15"></a-sphere>
     
       
       <a-light type="ambient" color="#666"></a-light>
@@ -38,15 +41,33 @@
   <script>
     <!-- Reference Video 3-->
     document
-      .querySelector("#o1")
+      .querySelector("#g1")
       .addEventListener("mouseenter", e => {
-        location.href = "o1.html";
+        location.href = "g1.html";
     });
     
     document
-      .querySelector("#o3")
+      .querySelector("#g5")
       .addEventListener("mouseenter", e => {
-        location.href = "o3.html";
+        location.href = "g5.html";
+    });
+        
+    document
+      .querySelector("#g6")
+      .addEventListener("mouseenter", e => {
+        location.href = "g6.html";
+    });
+    
+    document
+      .querySelector("#m1")
+      .addEventListener("mouseenter", e => {
+        location.href = "m1.html";
+    });
+        
+    document
+      .querySelector("#l1")
+      .addEventListener("mouseenter", e => {
+        location.href = "l1.html";
     });
     
     
