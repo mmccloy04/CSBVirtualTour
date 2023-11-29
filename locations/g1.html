@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="https://glitch.com/favicon.ico" />
+    <title>Location </title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <script src="https://cdn.jsdelivr.net/gh/aframevr/aframe@83f7ef5a4fb4935a57ed4dd7e72e5d51df7a4499/dist/aframe-master.min.js"></script>
+  </head>
+  
+  <body>
+
+    <a-scene>
+      <a-camera id="myCamera">
+        <a-cursor intersection-spawn="Event: click; mixin;voxel;" colour="red"> 
+        </a-cursor>
+      </a-camera>
+      
+      <!--background-->
+      <a-sky src="https://cdn.glitch.global/0ecceb09-097f-4efc-83ce-6923956c956e/003_mainfoyer_bydoor.jpg?v=1698966152686" rotation="0 -130 0"></a-sky>
+      
+      <!--Spheres with other locations-->
+
+      <a-sphere id="o1" src="https://cdn.glitch.global/0ecceb09-097f-4efc-83ce-6923956c956e/074_topofsteps_somepeople.jpg?v=1698964827198" position="-10.5 2 5"></a-sphere>
+      <a-sphere id="g2" src="" position="3 1 12"></a-sphere>
+      <a-sphere id="g3" src="https://cdn.glitch.global/0ecceb09-097f-4efc-83ce-6923956c956e/002_mainfoyer_empty.jpg?v=1698966397137" position="8 2 -15"></a-sphere>
+      <a-sphere id="g5" src="https://cdn.glitch.global/0ecceb09-097f-4efc-83ce-6923956c956e/017_foyer_carpeted_empty.jpg?v=1698966406251" position="-5.5 2 -13"></a-sphere>
+      <!--<a-sphere id="m1" src="https://cdn.glitch.global/0ecceb09-097f-4efc-83ce-6923956c956e/053_stairs_groundtofirst.jpg?v=1699107171210" position="5 1 -25"></a-sphere>-->
+    
+
+      
+      <a-light type="ambient" color="#666"></a-light>
+      <a-light type="point" intensity="" position="2 4 4"></a-light>
+    </a-scene> 
+  
+                     
+      </body>   
+  
+  <script>
+    <!-- Reference Video 3-->
+    document
+      .querySelector("#o1")
+      .addEventListener("mouseenter", e => {
+        location.href = "o1.html";
+    });
+    
+    document
+      .querySelector("#g2")
+      .addEventListener("mouseenter", e => {
+        location.href = "g2.html";
+    });
+    
+    document
+      .querySelector("#g3")
+      .addEventListener("mouseenter", e => {
+        location.href = "g3.html";
+    });
+    
+    document
+      .querySelector("#g5")
+      .addEventListener("mouseenter", e => {
+        location.href = "g5.html";
+    });
+    
+    
+
+    
+
+    
+  </script>
+    
+ 
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="https://aframe.io/releases/0.7.1/aframe.min.js"></script>
+  </head>
+  
+  <body>
+
+    <a-scene>
+     
+        <a-assets>
+          <img id="play" src="https://cdn.glitch.global/375b0d57-617c-4581-b5fe-45e80f5f1e6a/1.svg?v=1699656391967">
+          <img id="pause" src="https://cdn.glitch.global/375b0d57-617c-4581-b5fe-45e80f5f1e6a/2.svg?v=1699656396340">
+          <video id="video" src="https://player.vimeo.com/progressive_redirect/playback/889627571/rendition/1080p/file.mp4?loc=external&signature=cf6d3150e4b5e18d8a52803e6daf1f90cc25e49318241ff5fce6149eb9ea7772" autoplay></video>
+        </a-assets>
+      
+      <a-camera>
+        <a-cursor> 
+        </a-cursor>
+      </a-camera>
+      
+      <a-videosphere src="#video" rotation="0 -90 0"></a-videosphere>
+      
+      <a-image id="videoControls" src="play" position="0 1 -2" scale="0.2 0.2 1"></a-image>
+      
+    </a-scene> 
+  
+                     
+      </body>   
+</html>
