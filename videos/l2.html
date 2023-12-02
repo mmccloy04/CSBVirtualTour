@@ -14,14 +14,15 @@
     
     <a-scene>
       
-      <!-- this version has a delay but correctly autoplays and doesnt loop-->
-      
          <a-assets>
            <video id="myvideo" preload="auto"
-            onloadstart="this.playbackRate = 3;"
+            onloadstart="this.playbackRate = 4;"
             onended="videoEnded()"
-            src="https://player.vimeo.com/progressive_redirect/playback/890502554/rendition/1080p/file.mp4?loc=external&signature=c647ca675ffaa5f1ffebe87ed75d4fb6f8ebded31eaf5b34403c6122a8fb94ec"
+            src="https://player.vimeo.com/progressive_redirect/playback/890635991/rendition/1080p/file.mp4?loc=external&signature=d31799b956208d8a6429b7706b9f9289f7c36d01c4fcd8e52e295ea14fbf1025"
             autoplay="true" loop="false"></video>
+           <!-- alternative video with door already closed at the beginning https://player.vimeo.com/progressive_redirect/playback/890502554/rendition/1080p/file.mp4?loc=external&signature=c647ca675ffaa5f1ffebe87ed75d4fb6f8ebded31eaf5b34403c6122a8fb94ec 
+          alternative full video https://player.vimeo.com/progressive_redirect/playback/890616405/rendition/1080p/file.mp4?loc=external&signature=0a752d194fc8c2691d6e71014355ca8f4e8f2cf5fe4a07c67ed87db64b9b3bd5
+          -->
         </a-assets>
  
       
@@ -47,7 +48,9 @@
     
     <script>    
   function videoEnded() {
-      location.href="../locations/f3.html";
+     // location.href="../locations/f3.html";
+    <a-sphere id="l3" src="" position="4 2 -3.5" rotation="0 60 0"></a-plane>
+    
    }
     </script>
                      

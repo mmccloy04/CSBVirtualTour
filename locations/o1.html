@@ -13,6 +13,14 @@
   <body>
 
     <a-scene>
+      
+      
+      <a-entity oculus-touch-controls="hand: left" thumbstick-logging></a-entity>
+      <a-entity oculus-touch-controls="hand: right" thumbstick-logging></a-entity>
+      <a-entity laser-controls="hand: right"></a-entity>
+      
+      
+      
       <!--adding cursor to screen-->
       <a-camera id="myCamera" zoom ="0.8">
         <a-cursor intersection-spawn="Event: click; mixin;voxel;" colour="red"> 
