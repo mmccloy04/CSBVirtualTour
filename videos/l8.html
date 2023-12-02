@@ -18,9 +18,9 @@
       
          <a-assets>
            <video id="myvideo" preload="auto"
-            onloadstart="this.playbackRate = 4;"
+            onloadstart="this.playbackRate = 3;"
             onended="videoEnded()"
-            src="https://player.vimeo.com/progressive_redirect/playback/889675481/rendition/1080p/file.mp4?loc=external&signature=0c207e8a9a10fe98af0528f55ec93aa3d840aa1667dd767ab84b369fb5c9d56b"
+            src="https://player.vimeo.com/progressive_redirect/playback/890507607/rendition/1080p/file.mp4?loc=external&signature=46cf9c9d6d11bc6749bf0441002ed524c457b63b1f8ab47ab4ffdb0601ccf8f1"
             autoplay="true" loop="false"></video>
         </a-assets>
  
@@ -33,14 +33,21 @@
       
       <!--background-->
       
-       <a-videosphere src="#myvideo" rotation="0 -90 0"></a-videosphere>
+       <a-videosphere src="#myvideo" rotation="0 -130 0"></a-videosphere>
 
+      <!--Links to other locations-->
+      <a-plane id="l3" src="https://cdn.glitch.global/375b0d57-617c-4581-b5fe-45e80f5f1e6a/2.svg?v=1699656396340" position="-4 -1.1 -3.5" rotation="0 60 0"></a-plane>
+      <a-plane id="l2" src="https://cdn.glitch.global/61265dc0-3659-4188-962f-cde9463f447b/1lit.svg?v=1701299947309" position="-4 -2.2 -3.5" rotation="0 60 0"></a-plane>
+      <a-plane id="g5" src="https://cdn.glitch.global/375b0d57-617c-4581-b5fe-45e80f5f1e6a/G.svg?v=1699656389032" position="-4 -3.3 -3.5" rotation="0 60 0"></a-plane>
+      
+
+      
     </a-scene> 
     
     
     <script>    
   function videoEnded() {
-      location.href="o1.html";
+      location.href="../locations/f3.html";
    }
     </script>
                      

@@ -7,6 +7,7 @@
     <title>Location </title>
     <link rel="stylesheet" href="/css/style.css" />
     <script src="https://cdn.jsdelivr.net/gh/aframevr/aframe@83f7ef5a4fb4935a57ed4dd7e72e5d51df7a4499/dist/aframe-master.min.js"></script>
+    <script src="../../../js/script.js"></script>
   </head>
   
   <body>
@@ -19,11 +20,14 @@
       </a-camera>
       
       <!--background-->
-      <a-sky src="https://cdn.glitch.global/0ecceb09-097f-4efc-83ce-6923956c956e/090_firepoint_bus_nopeople.jpg?v=1698964895460" rotation="0 -130 0"></a-sky>
+      <a-sky src="https://cdn.glitch.me/8cefb064-2b3f-4ee6-95b2-81aed480e217/o5video.mp4?v=1701480367447" rotation="0 -130 0"></a-sky>
+      <!-- alternative image  https://cdn.glitch.global/0ecceb09-097f-4efc-83ce-6923956c956e/090_firepoint_bus_nopeople.jpg?v=1698964895460 rotation -130 -->
       
       <!--Spheres with other locations-->
       <a-sphere id="o4" src="https://cdn.glitch.global/0ecceb09-097f-4efc-83ce-6923956c956e/079_bottomofsteps_somepeople.jpg?v=1698964838558" position="10 2 10"></a-sphere>
     
+      <!--Link to video/s and/or audio-->
+      <a-sphere id="audio" src="" position="-14 2 -6" onclick="playAudio()"></a-sphere>
       
       <a-light type="ambient" color="#666"></a-light>
       <a-light type="point" intensity="" position="2 4 4"></a-light>
@@ -33,14 +37,21 @@
       </body>   
   
   <script>
-    <!-- Reference Video 3-->
+    
+     
+  <!--Navigation to other locations-->
     document
       .querySelector("#o4")
       .addEventListener("mouseenter", e => {
         location.href = "o4.html";
     });
-
     
+        
+    <!--audio file-->
+    const audioFile = ['https://cdn.glitch.global/8cefb064-2b3f-4ee6-95b2-81aed480e217/201%20Fire%20Alarm.mp3?v=1701451043976'
+    ];
+
+
   </script>
     
  

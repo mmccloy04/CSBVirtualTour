@@ -21,11 +21,12 @@
       <!--background-->
       <a-sky src="https://cdn.glitch.global/0ecceb09-097f-4efc-83ce-6923956c956e/045_insidelift_doorcsclosed.jpg?v=1699107055316" rotation="0 -130 0"></a-sky>
       
-      <!--Spheres with other locations-->     
-
-      <a-plane id="l3" src="https://cdn.glitch.global/375b0d57-617c-4581-b5fe-45e80f5f1e6a/2.svg?v=1699656396340" position="-4 -0.2 -1.5" rotation="0 60 0"></a-plane>
-      <a-plane id="l2" src="https://cdn.glitch.global/375b0d57-617c-4581-b5fe-45e80f5f1e6a/1.svg?v=1699656391967" position="-4 -1.3 -1.5" rotation="0 60 0"></a-plane>
+      <!--Links to other locations-->   
       <a-plane id="g5" src="https://cdn.glitch.global/375b0d57-617c-4581-b5fe-45e80f5f1e6a/G.svg?v=1699656389032" position="-4 -2.4 -1.5" rotation="0 60 0"></a-plane>
+      
+      <!--Link to video/s and/or audio-->
+      <a-plane id="l2" src="https://cdn.glitch.global/375b0d57-617c-4581-b5fe-45e80f5f1e6a/1.svg?v=1699656391967" position="-4 -1.3 -1.5" rotation="0 60 0"></a-plane>
+      <a-plane id="l3" src="https://cdn.glitch.global/375b0d57-617c-4581-b5fe-45e80f5f1e6a/2.svg?v=1699656396340" position="-4 -0.2 -1.5" rotation="0 60 0"></a-plane>
       
       <a-light type="ambient" color="#666"></a-light>
       <a-light type="point" intensity="" position="2 4 4"></a-light>
@@ -35,24 +36,28 @@
       </body>   
   
   <script>
-    document
-      .querySelector("#l3")
-      .addEventListener("mouseenter", e => {
-        location.href = "l3.html";
-    });
     
-    document
-      .querySelector("#l2")
-      .addEventListener("mouseenter", e => {
-        location.href = "l2.html";
-    });
-    
+     
+  <!--Navigation to other locations-->    
     document
       .querySelector("#g5")
       .addEventListener("mouseenter", e => {
         location.href = "g5.html";
     });
     
+
+    <!--videos-->
+    document
+      .querySelector("#l2")
+      .addEventListener("mouseenter", e => {
+        location.href = "../videos/l2.html";
+    });
+
+    document
+      .querySelector("#l3")
+      .addEventListener("mouseenter", e => {
+        location.href = "../videos/l3.html";
+    });
     
   </script>
     

@@ -21,14 +21,14 @@
       
       <!--background-->
       <a-sky src="https://cdn.glitch.global/0ecceb09-097f-4efc-83ce-6923956c956e/074_topofsteps_somepeople.jpg?v=1698964827198" rotation="0 -130 0"></a-sky>
-      
     
       <!--Spheres with other locations-->
-      <a-sphere id="o2" src="" position="4 3 -13"></a-sphere>
-      <a-sphere id="o3" src="" position="4 1 -13"></a-sphere>
       <a-sphere id="o4" src="https://cdn.glitch.global/0ecceb09-097f-4efc-83ce-6923956c956e/079_bottomofsteps_somepeople.jpg?v=1698964838558" position="-5 0 7"></a-sphere>
       <a-sphere id="g1" src="https://cdn.glitch.global/0ecceb09-097f-4efc-83ce-6923956c956e/003_mainfoyer_bydoor.jpg?v=1698966152686" position="5.5 2 -7"></a-sphere>
       
+      <!--Link to video/s and/or audio-->
+      <a-sphere id="o2" src="" position="4 3 -13"></a-sphere>
+      <a-sphere id="o3" src="" position="4 1 -13"></a-sphere>
       
       <a-light type="ambient" color="#666"></a-light>
       <a-light type="point" intensity="" position="2 4 4"></a-light>
@@ -38,18 +38,8 @@
       </body>   
   
   <script>
-    
-    document
-      .querySelector("#o2")
-      .addEventListener("mouseenter", e => {
-        location.href = "o2.html";
-    });
-    
-    document
-      .querySelector("#o3")
-      .addEventListener("mouseenter", e => {
-        location.href = "o3.html";
-    });
+ 
+  <!--Navigation to other locations-->    
     
     document
       .querySelector("#o4")
@@ -63,6 +53,19 @@
         location.href = "g1.html";
     });
 
+    <!--videos-->
+    
+    document
+      .querySelector("#o2")
+      .addEventListener("mouseenter", e => {
+        location.href = "../videos/o2.html";
+    });
+    
+    document
+      .querySelector("#o3")
+      .addEventListener("mouseenter", e => {
+        location.href = "../videos/o3.html";
+    });
     
   </script>
     

@@ -22,7 +22,8 @@
       <a-sky src="https://cdn.glitch.global/0ecceb09-097f-4efc-83ce-6923956c956e/053_stairs_groundtofirst.jpg?v=1699107171210" rotation="0 -130 0"></a-sky>
       
       <!--Spheres with other locations-->
-      <a-sphere id="f1" src="https://cdn.glitch.global/0ecceb09-097f-4efc-83ce-6923956c956e/036_mainfoyer.jpg?v=1699107287933" position="1 2 -10"></a-sphere>
+      <a-sphere id="g3" src="https://cdn.glitch.global/0ecceb09-097f-4efc-83ce-6923956c956e/002_mainfoyer_empty.jpg?v=1698966397137" position="10 -5 -8"></a-sphere>
+      <a-sphere id="f1" src="https://cdn.glitch.global/0ecceb09-097f-4efc-83ce-6923956c956e/036_mainfoyer.jpg?v=1699107287933" position="1 2 -12"></a-sphere>
     
 1
       <a-light type="ambient" color="#666"></a-light>
@@ -33,7 +34,15 @@
       </body>   
   
   <script>
-    <!-- Reference Video 3-->
+ 
+  <!--Navigation to other locations-->
+    
+    document
+      .querySelector("#g3")
+      .addEventListener("mouseenter", e => {
+        location.href = "g3.html";
+    });
+    
     document
       .querySelector("#f1")
       .addEventListener("mouseenter", e => {

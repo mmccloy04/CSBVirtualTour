@@ -13,19 +13,20 @@
 
     <a-scene>
       <!--adding cursor to screen-->
-      <a-camera position="1 1 0" id="myCamera">
+      <a-camera position="1 1 0" zoom="0.8">
         <a-cursor intersection-spawn="Event: click; mixin;voxel;" colour="red"> 
         </a-cursor>
       </a-camera>
       
-            <!--background-->
+      <!--background-->
       <a-sky src="https://cdn.glitch.global/0ecceb09-097f-4efc-83ce-6923956c956e/045_insidelift_doorcsclosed.jpg?v=1699107055316" rotation="0 -130 0"></a-sky>
       
+      <!--Links to other locations-->   
       <a-plane id="s3" src="https://cdn.glitch.global/375b0d57-617c-4581-b5fe-45e80f5f1e6a/2.svg?v=1699656396340" position="-4 -0.2 -1.5" rotation="0 60 0"></a-plane>
+      
+      <!--Link to video/s and/or audio-->
       <a-plane id="l8" src="https://cdn.glitch.global/375b0d57-617c-4581-b5fe-45e80f5f1e6a/1.svg?v=1699656391967" position="-4 -1.3 -1.5" rotation="0 60 0"></a-plane>
       <a-plane id="l9" src="https://cdn.glitch.global/375b0d57-617c-4581-b5fe-45e80f5f1e6a/G.svg?v=1699656389032" position="-4 -2.4 -1.5" rotation="0 60 0"></a-plane>
-      
-    
       
       <a-light type="ambient" color="#666"></a-light>
       <a-light type="point" intensity="" position="2 4 4"></a-light>
@@ -35,24 +36,29 @@
       </body>   
   
   <script>
-    <!-- Reference Video 3-->
+    
+     
+  <!--Navigation to other locations-->    
     document
       .querySelector("#s3")
       .addEventListener("mouseenter", e => {
         location.href = "s3.html";
     });
     
+
+    <!--videos-->
     document
       .querySelector("#l8")
       .addEventListener("mouseenter", e => {
-        location.href = "l8.html";
+        location.href = "../videos/l8.html";
     });
-    
+
     document
       .querySelector("#l9")
       .addEventListener("mouseenter", e => {
-        location.href = "l9.html";
+        location.href = "../videos/l9.html";
     });
+    
   </script>
     
  

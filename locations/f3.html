@@ -22,9 +22,10 @@
       <a-sky src="https://cdn.glitch.global/0ecceb09-097f-4efc-83ce-6923956c956e/042_foyerlifts.jpg?v=1699107301856" rotation="0 100 0"></a-sky>
       
     
-      <!--Spheres with other locations-->
-      <a-sphere id="g1" src="https://cdn.glitch.global/0ecceb09-097f-4efc-83ce-6923956c956e/g1.jpg?v=1698246818431" position="-3.5 2 -3"></a-sphere>
-      <a-sphere id="o2" src="https://cdn.glitch.global/0ecceb09-097f-4efc-83ce-6923956c956e/o2.jpg?v=1698246813756" position="-7 2 0"></a-sphere>
+      <!--Links to other locations-->
+      <a-sphere id="f1" src="https://cdn.glitch.global/0ecceb09-097f-4efc-83ce-6923956c956e/036_mainfoyer.jpg?v=1699107287933" position="5 2 -15"></a-sphere>
+      <a-sphere id="q1" src="https://cdn.glitch.global/0ecceb09-097f-4efc-83ce-6923956c956e/044_corridor1_canjustseelab.jpg?v=1699107303962" position="-3 2 8"></a-sphere>
+      <a-sphere id="l4" src="https://cdn.glitch.global/0ecceb09-097f-4efc-83ce-6923956c956e/045_insidelift_doorcsclosed.jpg?v=1699107055316" position="-5 2 -6"></a-sphere>
       
       
       <a-light type="ambient" color="#666"></a-light>
@@ -35,19 +36,25 @@
       </body>   
   
   <script>
-    <!-- Reference Video 3-->
+ 
+  <!--Navigation to other locations-->
     document
-      .querySelector("#g1")
+      .querySelector("#f1")
       .addEventListener("mouseenter", e => {
-        location.href = "g1.html";
+        location.href = "f1.html";
     });
     
     document
-      .querySelector("#o2")
+      .querySelector("#q1")
       .addEventListener("mouseenter", e => {
-        location.href = "o2.html";
+        location.href = "q1.html";
     });
     
+    document
+      .querySelector("#l4")
+      .addEventListener("mouseenter", e => {
+        location.href = "l4.html";
+    });
 
     
   </script>
