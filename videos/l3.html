@@ -18,29 +18,32 @@
       
          <a-assets>
            <video id="myvideo" preload="auto"
-            onloadstart="this.playbackRate = 3;"
+            onloadstart="this.playbackRate = 4;"
             onended="videoEnded()"
-            src="https://player.vimeo.com/progressive_redirect/playback/889674787/rendition/1080p/file.mp4?loc=external&signature=10cf13bc6a10bc5fc8ba0873e8af4c5f2d174946b049fcd477000178e5754503"
+            src="https://player.vimeo.com/progressive_redirect/playback/890631377/rendition/1080p/file.mp4?loc=external&signature=97125474db2ba611cd93dd0fd0bb2d51d6e3b3a1f31665993c051d9f661d3254"
             autoplay="true" loop="false"></video>
+            <!-- alternative video with door already closed at the beginning https://player.vimeo.com/progressive_redirect/playback/890509580/rendition/1080p/file.mp4?loc=external&signature=af7d5339865683c529431548741b213bf2b41891655a1973918ba0e4d838cdfc 
+            alternative full video https://player.vimeo.com/progressive_redirect/playback/890621736/rendition/1080p/file.mp4?loc=external&signature=006838c1448817df2c1b89c895e95f52dbf9a619dc8855c52dd973be76835d66 -->
         </a-assets>
  
       
       <!--adding cursor to screen-->
-      <a-camera position="1 1 0" zoom="0.8">
+      <a-camera position="1 1 0" zoom="0.68">
         <a-cursor intersection-spawn="Event: click; mixin;voxel;" colour="red"> 
         </a-cursor>
       </a-camera>
       
       <!--background-->
       
-       <a-videosphere src="#myvideo" rotation="0 -90 0"></a-videosphere>
+       <a-videosphere src="#myvideo" rotation="0 -113 0"></a-videosphere>
 
+      
     </a-scene> 
     
     
     <script>    
   function videoEnded() {
-      location.href="o1.html";
+      location.href="../locations/l7.html";
    }
     </script>
                      

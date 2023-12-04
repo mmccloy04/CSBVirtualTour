@@ -22,9 +22,10 @@
       <a-sky src="https://cdn.glitch.global/0ecceb09-097f-4efc-83ce-6923956c956e/003_mainfoyer.jpg?v=1699107476948" rotation="0 -130 0"></a-sky>
       
       <!--Spheres with other locations-->
-      <a-sphere id="o1" src="https://cdn.glitch.global/0ecceb09-097f-4efc-83ce-6923956c956e/o1.jpg?v=1698246807420" position="-7 2 0"></a-sphere>
-      <a-sphere id="o3" src="" position="-3.5 2 -3"></a-sphere>
-    
+      <a-sphere id="s2" src="https://cdn.glitch.global/0ecceb09-097f-4efc-83ce-6923956c956e/007_foyeryellowcorridor.jpg?v=1699107484531" position="8 1.5 -13"></a-sphere>
+      <a-sphere id="s3" src="https://cdn.glitch.global/0ecceb09-097f-4efc-83ce-6923956c956e/015_foyerlifts.jpg?v=1699107504841" position="12 1 -5"></a-sphere>
+      <a-sphere id="m2" src="https://cdn.glitch.global/0ecceb09-097f-4efc-83ce-6923956c956e/060_stairs_secondtofirst.jpg?v=1699107171950" position="-3.5 1.5 10"></a-sphere>
+      
       
       <a-light type="ambient" color="#666"></a-light>
       <a-light type="point" intensity="" position="2 4 4"></a-light>
@@ -34,19 +35,27 @@
       </body>   
   
   <script>
-    <!-- Reference Video 3-->
+ 
+  <!--Navigation to other locations-->
     document
-      .querySelector("#o1")
+      .querySelector("#s2")
       .addEventListener("mouseenter", e => {
-        location.href = "o1.html";
+        location.href = "s2.html";
     });
     
     document
-      .querySelector("#o3")
+      .querySelector("#s3")
       .addEventListener("mouseenter", e => {
-        location.href = "o3.html";
+        location.href = "s3.html";
     });
     
+        
+    document
+      .querySelector("#m2")
+      .addEventListener("mouseenter", e => {
+        location.href = "m2.html";
+    });
+  
     
   </script>
     

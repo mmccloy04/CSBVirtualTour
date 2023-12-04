@@ -11,21 +11,24 @@
   
   <body>
 
-    <a-scene>
+    <a-scene>           
       <!--adding cursor to screen-->
-      <a-camera position="1 1 0" id="myCamera">
+      <a-camera position="1 1 0" zoom="0.78">
         <a-cursor intersection-spawn="Event: click; mixin;voxel;" colour="red"> 
         </a-cursor>
       </a-camera>
       
       <!--background-->
-      <a-sky src="https://cdn.glitch.global/0ecceb09-097f-4efc-83ce-6923956c956e/045_insidelift_doorcsclosed.jpg?v=1699107055316" rotation="0 -130 0"></a-sky>
+      <a-sky src="https://cdn.glitch.me/8cefb064-2b3f-4ee6-95b2-81aed480e217/l4video_v2.mp4?v=1701598882082" rotation="0 -111 0"></a-sky>
+      <!-- alternative video   https://cdn.glitch.me/8cefb064-2b3f-4ee6-95b2-81aed480e217/l4video.mp4?v=1701532670186 -->
       
-      <a-plane id="l6" src="https://cdn.glitch.global/375b0d57-617c-4581-b5fe-45e80f5f1e6a/2.svg?v=1699656396340" position="-4 -0.2 -1.5" rotation="0 60 0"></a-plane>
-      <a-plane id="f3" src="https://cdn.glitch.global/375b0d57-617c-4581-b5fe-45e80f5f1e6a/1.svg?v=1699656391967" position="-4 -1.3 -1.5" rotation="0 60 0"></a-plane>
+      <!--Links to other locations-->   
+      <a-sphere id="f3" src="https://cdn.glitch.global/0ecceb09-097f-4efc-83ce-6923956c956e/042_foyerlifts.jpg?v=1699107301856" position="4.5 1 -7"></a-sphere>
+      
+      <!--Lift buttons-->
+      <a-plane id="f" src="https://cdn.glitch.global/375b0d57-617c-4581-b5fe-45e80f5f1e6a/1.svg?v=1699656391967" position="-4 -1.3 -1.5" rotation="0 60 0"></a-plane>
       <a-plane id="l5" src="https://cdn.glitch.global/375b0d57-617c-4581-b5fe-45e80f5f1e6a/G.svg?v=1699656389032" position="-4 -2.4 -1.5" rotation="0 60 0"></a-plane>
-      
-    
+      <a-plane id="l6" src="https://cdn.glitch.global/375b0d57-617c-4581-b5fe-45e80f5f1e6a/2.svg?v=1699656396340" position="-4 -0.2 -1.5" rotation="0 60 0"></a-plane>
       
       <a-light type="ambient" color="#666"></a-light>
       <a-light type="point" intensity="" position="2 4 4"></a-light>
@@ -35,25 +38,28 @@
       </body>   
   
   <script>
-    <!-- Reference Video 3-->
-    document
-      .querySelector("#l6")
-      .addEventListener("mouseenter", e => {
-        location.href = "l6.html";
-    });
     
+     
+  <!--Navigation to other locations-->    
     document
       .querySelector("#f3")
       .addEventListener("mouseenter", e => {
         location.href = "f3.html";
     });
     
+
+    <!--videos-->
     document
       .querySelector("#l5")
       .addEventListener("mouseenter", e => {
-        location.href = "l5.html";
+        location.href = "../videos/l5.html";
     });
-    
+
+    document
+      .querySelector("#l6")
+      .addEventListener("mouseenter", e => {
+        location.href = "../videos/l6.html";
+    });
     
   </script>
     

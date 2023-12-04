@@ -20,27 +20,31 @@
            <video id="myvideo" preload="auto"
             onloadstart="this.playbackRate = 4;"
             onended="videoEnded()"
-            src="https://player.vimeo.com/progressive_redirect/playback/889671039/rendition/1080p/file.mp4?loc=external&signature=734ed3bb72a22f8e207415e439ac85b27d8c1536a058d6825359801a8a9432cd"
+            src="https://player.vimeo.com/progressive_redirect/playback/890633396/rendition/1080p/file.mp4?loc=external&signature=2f248a53320a4827ab0eefe06eeba7dcaa266caea2858e7bb535106716dac727"
             autoplay="true" loop="false"></video>
+            <!-- alternative video with door already closed at the beginning https://player.vimeo.com/progressive_redirect/playback/890501758/rendition/1080p/file.mp4?loc=external&signature=8d59f5e95f58333d028c8d983688922e1656a154c637efde91a9fa000bee4fb1 
+            alternative full video https://player.vimeo.com/progressive_redirect/playback/890619791/rendition/1080p/file.mp4?loc=external&signature=482a86f577b14b0e883c68306f77eac959c0b845e877bcf12fa1ca60c83bf10f
+            -->       
         </a-assets>
  
       
       <!--adding cursor to screen-->
-      <a-camera position="1 1 0" zoom="0.8">
+      <a-camera position="1 1 0" zoom="0.68">
         <a-cursor intersection-spawn="Event: click; mixin;voxel;" colour="red"> 
         </a-cursor>
       </a-camera>
       
       <!--background-->
       
-       <a-videosphere src="#myvideo" rotation="0 -90 0"></a-videosphere>
+       <a-videosphere src="#myvideo" rotation="0 -113 0"></a-videosphere>
 
+      
     </a-scene> 
     
     
     <script>    
   function videoEnded() {
-      location.href="c2.html";
+      location.href="../locations/l1.html";
    }
     </script>
                      
