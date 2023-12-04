@@ -13,11 +13,26 @@
   <body>
 
     <a-scene>
+      
+    
+      <!--controls-->
+      <a-entity oculus-touch-controls="hand: left" thumbstick-logging></a-entity>
+      <a-entity oculus-touch-controls="hand: right" thumbstick-logging></a-entity>
+      <a-entity laser-controls="hand: right"></a-entity>
+      
+      
       <!--adding cursor to screen-->
       <a-camera position="1 1 0" id="myCamera">
         <a-cursor intersection-spawn="Event: click; mixin;voxel;" colour="red"> 
         </a-cursor>
+       <a-cursor
+      id="cursor"
+      animation__click="property: scale; from: 0.1 0.1 0.1; to: 1 1 1; easing: easeInCubic; dur: 150; startEvents: click"
+      animation__clickreset="property: scale; to: 0.1 0.1 0.1; dur: 1; startEvents: animationcomplete__click"
+      animation__fusing="property: scale; from: 1 1 1; to: 0.1 0.1 0.1; easing: easeInCubic; dur: 150; startEvents: fusing"></a-cursor>
       </a-camera>
+      
+ 
       
       <!--background-->
       <a-sky src="https://cdn.glitch.me/8cefb064-2b3f-4ee6-95b2-81aed480e217/o5video.mp4?v=1701480367447" rotation="0 -130 0"></a-sky>
@@ -27,7 +42,7 @@
       <a-sphere id="o4" src="https://cdn.glitch.global/0ecceb09-097f-4efc-83ce-6923956c956e/079_bottomofsteps_somepeople.jpg?v=1698964838558" position="10 2 10"></a-sphere>
     
       <!--Link to video/s and/or audio-->
-      <a-sphere id="audio" src="" position="-14 2 -6" onclick="playAudio()"></a-sphere>
+      <a-box id="audio" src="https://cdn.glitch.global/8cefb064-2b3f-4ee6-95b2-81aed480e217/audio.png?v=1701603505838" position="-8.5 2 -3.5" onclick="playAudio()"></a-box>
       
       <a-light type="ambient" color="#666"></a-light>
       <a-light type="point" intensity="" position="2 4 4"></a-light>
