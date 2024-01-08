@@ -1,3 +1,5 @@
+<!-- CONTROLLERS WORK TO CLICK ON SPHERE AND AUDIO. IN DESKTOP MODE NEED TO HOVER OVER WITH CURSOR AND CLICK MOUSE ---> 
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -14,7 +16,6 @@
 
     <a-scene>
       
-    
       <!--controls-->
       <a-entity oculus-touch-controls="hand: left" thumbstick-logging></a-entity>
       <a-entity oculus-touch-controls="hand: right" thumbstick-logging></a-entity>
@@ -57,7 +58,7 @@
   <!--Navigation to other locations-->
     document
       .querySelector("#o4")
-      .addEventListener("mouseenter", e => {
+      .addEventListener("click", e => {
         location.href = "o4.html";
     });
     

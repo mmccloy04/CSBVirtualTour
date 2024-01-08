@@ -1,3 +1,5 @@
+<!-- CONTROLLERS WORK TO CLICK ON SPHERE. IN DESKTOP MODE NEED TO HOVER OVER WITH CURSOR AND CLICK MOUSE ---> 
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -7,16 +9,28 @@
     <title>Location </title>
     <link rel="stylesheet" href="/css/style.css" />
     <script src="https://cdn.jsdelivr.net/gh/aframevr/aframe@83f7ef5a4fb4935a57ed4dd7e72e5d51df7a4499/dist/aframe-master.min.js"></script>
+      <script src="../../../js/script.js"></script>
   </head>
   
   <body>
 
     <a-scene>      
       
+   <!--controls-->
+      <a-entity oculus-touch-controls="hand: left" thumbstick-logging></a-entity>
+      <a-entity oculus-touch-controls="hand: right" thumbstick-logging></a-entity>
+      <a-entity laser-controls="hand: right"></a-entity>
+      
+      
       <!--adding cursor to screen-->
       <a-camera position="1 1 0" id="myCamera">
         <a-cursor intersection-spawn="Event: click; mixin;voxel;" colour="red"> 
         </a-cursor>
+       <a-cursor
+      id="cursor"
+      animation__click="property: scale; from: 0.1 0.1 0.1; to: 1 1 1; easing: easeInCubic; dur: 150; startEvents: click"
+      animation__clickreset="property: scale; to: 0.1 0.1 0.1; dur: 1; startEvents: animationcomplete__click"
+      animation__fusing="property: scale; from: 1 1 1; to: 0.1 0.1 0.1; easing: easeInCubic; dur: 150; startEvents: fusing"></a-cursor>
       </a-camera>
       
       <!--background-->
@@ -41,13 +55,13 @@
   <!--Navigation to other locations-->
     document
       .querySelector("#o1")
-      .addEventListener("mouseenter", e => {
+      .addEventListener("click", e => {
         location.href = "o1.html";
     });
     
     document
       .querySelector("#o5")
-      .addEventListener("mouseenter", e => {
+      .addEventListener("click", e => {
         location.href = "o5.html";
     });
     
