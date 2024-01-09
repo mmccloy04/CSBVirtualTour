@@ -14,15 +14,10 @@
   
   <body>
 
-    <a-scene>
-      
-      <!--controls-->
-      <a-entity oculus-touch-controls="hand: left" thumbstick-logging></a-entity>
-      <a-entity oculus-touch-controls="hand: right" thumbstick-logging></a-entity>
-      <a-entity laser-controls="hand: right"></a-entity>
-      
-      
-      <!--adding cursor to screen-->
+    <a-scene>     
+         
+      <!--CURSOR
+      adding cursor to screen. source: https://www.youtube.com/watch?v=vQ85u3dzmZY-->
       <a-camera position="1 1 0" id="myCamera">
         <a-cursor intersection-spawn="Event: click; mixin;voxel;" colour="red"> 
         </a-cursor>
@@ -33,16 +28,22 @@
       animation__fusing="property: scale; from: 1 1 1; to: 0.1 0.1 0.1; easing: easeInCubic; dur: 150; startEvents: fusing"></a-cursor>
       </a-camera>
       
- 
-      
-      <!--background-->
+            
+      <!--CONTROLS AND LASER
+      source: https://aframe.io/docs/1.5.0/introduction/interactions-and-controllers.html (first two) and 
+      https://aframe.io/docs/1.5.0/components/laser-controls.html#:~:text=laser%2dcontrols%20is%20a%20higher,vive%2dcontrols (last one) -->
+      <a-entity oculus-touch-controls="hand: left" thumbstick-logging></a-entity>
+      <a-entity oculus-touch-controls="hand: right" thumbstick-logging></a-entity>
+      <a-entity laser-controls="hand: right"></a-entity>
+
+      <!--BACKGROUND-->
       <a-sky src="https://cdn.glitch.me/8cefb064-2b3f-4ee6-95b2-81aed480e217/o5video.mp4?v=1701480367447" rotation="0 -130 0"></a-sky>
       <!-- alternative image  https://cdn.glitch.global/0ecceb09-097f-4efc-83ce-6923956c956e/090_firepoint_bus_nopeople.jpg?v=1698964895460 rotation -130 -->
       
-      <!--Spheres with other locations-->
+      <!--OBJECTS LINKING TO OTHER LOCATIONS -->
       <a-sphere id="o4" src="https://cdn.glitch.global/0ecceb09-097f-4efc-83ce-6923956c956e/079_bottomofsteps_somepeople.jpg?v=1698964838558" position="10 2 10"></a-sphere>
     
-      <!--Link to video/s and/or audio-->
+      <!-- OBJECTS FOR VIDEOS/AUDIO-->
       <a-box id="audio" src="https://cdn.glitch.global/8cefb064-2b3f-4ee6-95b2-81aed480e217/audio.png?v=1701603505838" position="-8.5 2 -3.5" onclick="playAudio()"></a-box>
       
       <a-light type="ambient" color="#666"></a-light>
