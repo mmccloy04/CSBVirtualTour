@@ -1,7 +1,6 @@
-<!-- TESTING - TRYING TO HAVE HANDS TO GRAB AS WELL AS LASERS FOR THINGS FAR AWAY. 
-HAS HAND AND CONTROLLER WHERE CONTROLLERS ARE 
-TURNED OFF GAZE
-CONTROLS/LASER NOT WORKING AT THE MOMENT -->
+<!-- WORKS WITH BEING ABLE TO GRAB OBJECTS WITH HANDS AND ALSO CLICK ON OBJECTS USING LASER
+ BUT VERY GLITCHY IE COMES OUT OF VR MODE WHEN GOING FROM OTHER AREA 
+AND ALSO WHEN YOU PUT CONTROLLERS DOWN, CANT SEEM TO PICK THEM UP AGAIN, HANDS JUST SHOW BELOW YOU-->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -27,16 +26,6 @@ CONTROLS/LASER NOT WORKING AT THE MOMENT -->
   <body>
 
     <a-scene>
-      
-            
-      <!--NAV MESH - REVIEW THIS
-      source https://michael-mcanally.medium.com/basic-movement-and-teleportation-in-vr-with-a-frame-114a59767ffc
-      <!-- nav-mesh: protecting us from running through things  -->
-      <a-entity id="navmesh-Hello" gltf-model="assets/gltf/AdvHelloWorldnavmesh.gltf" visible="false" nav-mesh=""></a-entity>
-      <!-- Basic movement and teleportation  -->
-      <a-entity id="cameraRig" movement-controls="constrainToNavMesh: true;" navigator="cameraRig: #cameraRig; cameraHead: #head; collisionEntities: .collision; ignoreEntities: .clickable" position="0 0 0" rotation="0 0 0"></a-entity>
-        
-      
       
       <!--CURSOR
       adding cursor to screen. source: https://www.youtube.com/watch?v=vQ85u3dzmZY-->
