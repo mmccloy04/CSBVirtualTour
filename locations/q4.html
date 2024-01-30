@@ -3,54 +3,111 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" href="https://glitch.com/favicon.ico" />
-    <title>Location </title>
+    <link rel="icon" href="https://cdn.glitch.global/189c5b32-4e8b-4e96-b443-5aae4d110245/qublogo.png?v=1706269760196" /> <!--Queens logo sourced from https://www.stickpng.com/img/icons-logos-emojis/russell-group-universities/queens-university-belfast-logo -->
+    <title>EEECS VR Tour</title>
     <link rel="stylesheet" href="/css/style.css" />
-    <script src="https://cdn.jsdelivr.net/gh/aframevr/aframe@83f7ef5a4fb4935a57ed4dd7e72e5d51df7a4499/dist/aframe-master.min.js"></script>
+    <script src="../../../js/script.js"></script>
+    <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.misc.min.js"></script> <!-- script for hand controls and animation sourced from https://www.youtube.com/watch?v=vQ85u3dzmZY and https://github.com/c-frame/aframe-super-hands-component-->
+    <script src="https://unpkg.com/super-hands@^3.0.3/dist/super-hands.min.js"></script> <!-- script for superhands sourced from https://github.com/c-frame/aframe-super-hands-component-->
+    <script src="https://unpkg.com/aframe-event-set-component@5.x.x/dist/aframe-event-set-component.min.js"></script> <!-- script for event set component sourced from https://aframe.io/docs/1.5.0/guides/building-a-360-image-gallery.html -->
+    
+    <!-- CUSTOM COMPONENT
+    Registering a custom component to have one entity face another entity (used to make objects face the user)
+    Sourced from https://stackoverflow.com/questions/66508949/a-frame-make-model-face-the-viewer-center-of-the-screen-or-canvas -->
+    <script>
+      AFRAME.registerComponent("look-at", {
+        schema: { type: "selector" },
+
+        init: function () {},
+
+        tick: function () {
+          this.el.object3D.lookAt(this.data.object3D.position);
+        },
+      });
+    </script>
+    
+    <!--CONTROLLER COMPONENT
+    Used to support all the controller components, while providing the hand and overriding the model.
+    Sourced from aframe.io/docs/1.5.0/introduction/interactions-and-controllers.html#creating-custom-controllers -->
+    <script>
+      AFRAME.registerComponent("custom-controls", {
+        schema: {
+          hand: { default: "" },
+          model: { default: "customControllerModel.gltf" },
+        },
+        update: function () {
+          var hand = this.data.hand;
+          var el = this.el;
+          var controlConfiguration = {
+            hand: hand,
+            model: false,
+            orientationOffset: { x: 0, y: 0, z: hand === "left" ? 90 : -90 },
+          };
+          // Build on top of controller components.
+          el.setAttribute("vive-controls", controlConfiguration);
+          el.setAttribute("oculus-touch-controls", controlConfiguration);
+          el.setAttribute("windows-motion-controls", controlConfiguration);
+          // Set a model.
+          el.setAttribute("gltf-model", this.data.model);
+        },
+      });
+    </script>
+    
   </head>
   
-  <body>
-
+   <body>
     <a-scene>
-      <!--adding cursor to screen-->
-      <a-camera position="1 1 0" id="myCamera">
-        <a-cursor intersection-spawn="Event: click; mixin;voxel;" colour="red"> 
-        </a-cursor>
-      </a-camera>
       
-      <!--background-->
-      <a-sky src="https://cdn.glitch.global/0ecceb09-097f-4efc-83ce-6923956c956e/057_corridor3.jpg?v=1699107459380" rotation="0 90 0"></a-sky>
+     <!--ASSETS-->
+      <a-assets>
+        <!--360 images for locations-->
+        <img id="q3_image" src="https://cdn.glitch.global/0ecceb09-097f-4efc-83ce-6923956c956e/055_corridor2_myreflection.jpg?v=1699107362968">
+        <img id="q4_image" src="https://cdn.glitch.global/0ecceb09-097f-4efc-83ce-6923956c956e/057_corridor3.jpg?v=1699107459380">
+        <img id="q5_image" src="https://cdn.glitch.global/0ecceb09-097f-4efc-83ce-6923956c956e/058_corridor4_outsidequietroom.jpg?v=1699107400907">
+      </a-assets>
+
+      <!--CAMERA AND CONTROLS-->
+      <a-entity>
+        <a-camera position="1 1 0" id="myCamera" cursor="rayOrigin: mouse"></a-camera>
+        <a-entity sphere-collider="objects: a-plane, a-box, a-sphere" super-hands hand-controls="hand: right"></a-entity>  <!-- Right hand implements hand controls with superhands, adapted/sourced from https://github.com/c-frame/aframe-super-hands-component -->
+        <a-entity oculus-touch-controls="hand: left" thumbstick-logging></a-entity> <!--Left hand is the controller, adapted/sourced from https://aframe.io/docs/1.5.0/components/oculus-touch-controls.html -->
+        <a-entity laser-controls="hand: left"></a-entity> <!--Left hand (controller) has laser, adapted/sourced from https://aframe.io/docs/1.5.0/components/laser-controls.html -->
+      </a-entity>
       
-    
-      <!--Spheres with other locations-->
-      <a-sphere id="q3" src="https://cdn.glitch.global/0ecceb09-097f-4efc-83ce-6923956c956e/055_corridor2_myreflection.jpg?v=1699107362968" position="1 2 13"></a-sphere>
-      <a-sphere id="q5" src="https://cdn.glitch.global/0ecceb09-097f-4efc-83ce-6923956c956e/058_corridor4_outsidequietroom.jpg?v=1699107400907" position="1 2.5 -8"></a-sphere>
+      <!--BACKGROUND-->  
+      <a-sky src="#q4_image" rotation="0 90 0"></a-sky>
       
+      <!--SPHERES LINKING TO OTHER LOCATIONS -->
+      <a-sphere id="q3" position="1 2 11" radius="1" src="#q3_image"
+        event-set__enter="_event: mouseenter; scale: 1.2 1.2 1.2"
+        event-set__leave="_event: mouseleave; scale: 1 1 1">
+        <a-text font="kelsonsans" value="This way to the\nFoyer" width="7" position="0 -1.5 0" align="center" look-at="#myCamera"></a-text>
+      </a-sphere>
       
-      <a-light type="ambient" color="#666"></a-light>
-      <a-light type="point" intensity="" position="2 4 4"></a-light>
-    </a-scene> 
-  
-                     
-      </body>   
-  
-  <script>
- 
-  <!--Navigation to other locations-->
+      <a-sphere id="q5" position="1.2 1.8 -8" radius="1" src="#q5_image"
+        event-set__enter="_event: mouseenter; scale: 1.2 1.2 1.2"
+        event-set__leave="_event: mouseleave; scale: 1 1 1">
+        <a-text font="kelsonsans" value="This way to the\nQuiet Space" width="7" position="0 -1.5 0" align="center" look-at="#myCamera"></a-text>
+      </a-sphere>
+      
+    </a-scene>
+  </body>
+
+
+  <!--NAVIGATE TO OTHER PAGES (LOCATIONS/VIDEOS) -->  
+  <script> 
     document
       .querySelector("#q3")
-      .addEventListener("mouseenter", e => {
+      .addEventListener("click", e => {
         location.href = "q3.html";
     });
-    
     document
       .querySelector("#q5")
-      .addEventListener("mouseenter", e => {
+      .addEventListener("click", e => {
         location.href = "q5.html";
     });
-    
-
-    
   </script>
     
  

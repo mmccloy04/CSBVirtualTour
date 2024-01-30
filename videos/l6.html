@@ -3,52 +3,45 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" href="https://glitch.com/favicon.ico" />
-    <title>Location </title>
-    <link rel="stylesheet" href="/css/style.css" />
-    <script src="https://cdn.jsdelivr.net/gh/aframevr/aframe@83f7ef5a4fb4935a57ed4dd7e72e5d51df7a4499/dist/aframe-master.min.js"></script>
+    <link rel="icon" href="https://cdn.glitch.global/189c5b32-4e8b-4e96-b443-5aae4d110245/qublogo.png?v=1706269760196" /> <!--Queens logo sourced from https://www.stickpng.com/img/icons-logos-emojis/russell-group-universities/queens-university-belfast-logo -->
+    <title>EEECS VR Tour</title>
+    <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+ <!-- <script src="https://cdn.jsdelivr.net/gh/aframevr/aframe@83f7ef5a4fb4935a57ed4dd7e72e5d51df7a4499/dist/aframe-master.min.js"></script>-->
     <script src="https://player.vimeo.com/api/player.js"></script>
   </head>
   
   <body>
-    
     <a-scene>
       
-      <!-- this version has a delay but correctly autoplays and doesnt loop-->
-      
-         <a-assets>
-           <video id="myvideo" preload="auto"
-            onloadstart="this.playbackRate = 4;"
-            onended="videoEnded()"
-            src="https://player.vimeo.com/progressive_redirect/playback/890637349/rendition/1080p/file.mp4?loc=external&signature=2cda15c12ad00541bb3d1d3b816e70440785fc25e2c7cba4573684b38faf2b19"
-            autoplay="true" loop="false"></video>
-            <!-- alternative video with door already closed at the beginning https://player.vimeo.com/progressive_redirect/playback/890503893/rendition/1080p/file.mp4?loc=external&signature=a0749f960cb45c2c07ce6d4eada48b07d1d706093bc7010fe45f059db7b82210 
-            alternative full video https://player.vimeo.com/progressive_redirect/playback/890618360/rendition/1080p/file.mp4?loc=external&signature=ab4024452282a064cdcba16445e154ec64ac8f0c78171367f4ca09ed03a781c2
-            -->
-        </a-assets>
+      <!--ASSETS-->
+      <a-assets>
+       <video id="myvideo" preload="auto"
+        onloadstart="this.playbackRate = 4;"
+        onended="videoEnded()"
+        src="https://player.vimeo.com/progressive_redirect/playback/890637349/rendition/1080p/file.mp4?loc=external&signature=2cda15c12ad00541bb3d1d3b816e70440785fc25e2c7cba4573684b38faf2b19"
+        autoplay="true" loop="false"></video>
+        <!-- alternative video with door already closed at the beginning https://player.vimeo.com/progressive_redirect/playback/890503893/rendition/1080p/file.mp4?loc=external&signature=a0749f960cb45c2c07ce6d4eada48b07d1d706093bc7010fe45f059db7b82210 
+        alternative full video https://player.vimeo.com/progressive_redirect/playback/890618360/rendition/1080p/file.mp4?loc=external&signature=ab4024452282a064cdcba16445e154ec64ac8f0c78171367f4ca09ed03a781c2
+        -->
+      </a-assets>
  
+      <!--CAMERA AND CONTROLS-->
+      <a-entity>
+        <a-camera position="1 1 0" id="myCamera" cursor="rayOrigin: mouse" zoom="0.78"></a-camera>
+      </a-entity>
       
-      <!--adding cursor to screen-->
-      <a-camera position="1 1 0" zoom="0.78">
-        <a-cursor intersection-spawn="Event: click; mixin;voxel;" colour="red"> 
-        </a-cursor>
-      </a-camera>
-      
-      <!--background-->
-      
+      <!--BACKGROUND-->
        <a-videosphere src="#myvideo" rotation="0 -111 0"></a-videosphere>
-
-
+      
     </a-scene> 
     
-    
+    <!--SCRIPT TO REDIRECT TO DESIRED LOCATION PAGE ONCE VIDEO ENDED-->      
     <script>    
-  function videoEnded() {
-      location.href="../locations/l7.html";
-   }
+      function videoEnded() {
+          location.href="../locations/l7.html";
+       }
     </script>
                      
-      </body>   
-  
+  </body>   
  
 </html>

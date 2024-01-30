@@ -3,64 +3,127 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" href="https://glitch.com/favicon.ico" />
-    <title>Location </title>
+    <link rel="icon" href="https://cdn.glitch.global/189c5b32-4e8b-4e96-b443-5aae4d110245/qublogo.png?v=1706269760196" /> <!--Queens logo sourced from https://www.stickpng.com/img/icons-logos-emojis/russell-group-universities/queens-university-belfast-logo -->
+    <title>EEECS VR Tour</title>
     <link rel="stylesheet" href="/css/style.css" />
-    <script src="https://cdn.jsdelivr.net/gh/aframevr/aframe@83f7ef5a4fb4935a57ed4dd7e72e5d51df7a4499/dist/aframe-master.min.js"></script>
+    <script src="../../../js/script.js"></script>
+    <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.misc.min.js"></script> <!-- script for hand controls and animation sourced from https://www.youtube.com/watch?v=vQ85u3dzmZY and https://github.com/c-frame/aframe-super-hands-component-->
+    <script src="https://unpkg.com/super-hands@^3.0.3/dist/super-hands.min.js"></script> <!-- script for superhands sourced from https://github.com/c-frame/aframe-super-hands-component-->
+    <script src="https://unpkg.com/aframe-event-set-component@5.x.x/dist/aframe-event-set-component.min.js"></script> <!-- script for event set component sourced from https://aframe.io/docs/1.5.0/guides/building-a-360-image-gallery.html -->
+    
+    <!-- CUSTOM COMPONENT
+    Registering a custom component to have one entity face another entity (used to make objects face the user)
+    Sourced from https://stackoverflow.com/questions/66508949/a-frame-make-model-face-the-viewer-center-of-the-screen-or-canvas -->
+    <script>
+      AFRAME.registerComponent("look-at", {
+        schema: { type: "selector" },
+
+        init: function () {},
+
+        tick: function () {
+          this.el.object3D.lookAt(this.data.object3D.position);
+        },
+      });
+    </script>
+    
+    <!--CONTROLLER COMPONENT
+    Used to support all the controller components, while providing the hand and overriding the model.
+    Sourced from aframe.io/docs/1.5.0/introduction/interactions-and-controllers.html#creating-custom-controllers -->
+    <script>
+      AFRAME.registerComponent("custom-controls", {
+        schema: {
+          hand: { default: "" },
+          model: { default: "customControllerModel.gltf" },
+        },
+        update: function () {
+          var hand = this.data.hand;
+          var el = this.el;
+          var controlConfiguration = {
+            hand: hand,
+            model: false,
+            orientationOffset: { x: 0, y: 0, z: hand === "left" ? 90 : -90 },
+          };
+          // Build on top of controller components.
+          el.setAttribute("vive-controls", controlConfiguration);
+          el.setAttribute("oculus-touch-controls", controlConfiguration);
+          el.setAttribute("windows-motion-controls", controlConfiguration);
+          // Set a model.
+          el.setAttribute("gltf-model", this.data.model);
+        },
+      });
+    </script>
+    
   </head>
   
-  <body>
-
-    <a-scene>           
-      <!--adding cursor to screen-->
-      <a-camera position="1 1 0" zoom="0.78">
-        <a-cursor intersection-spawn="Event: click; mixin;voxel;" colour="red"> 
-        </a-cursor>
-      </a-camera>
+   <body>
+    <a-scene>
       
-      <!--background-->
+     <!--ASSETS-->
+      <a-assets>
+        <!--360 images for locations-->
+        <img id="f3_image" src="https://cdn.glitch.global/0ecceb09-097f-4efc-83ce-6923956c956e/042_foyerlifts.jpg?v=1699107301856">
+      </a-assets>
+
+      <!--CAMERA AND CONTROLS-->
+      <a-entity>
+        <a-camera position="1 1 0" id="myCamera" cursor="rayOrigin: mouse"></a-camera>
+        <a-entity sphere-collider="objects: a-plane, a-box, a-sphere" super-hands hand-controls="hand: right"></a-entity>  <!-- Right hand implements hand controls with superhands, adapted/sourced from https://github.com/c-frame/aframe-super-hands-component -->
+        <a-entity oculus-touch-controls="hand: left" thumbstick-logging></a-entity> <!--Left hand is the controller, adapted/sourced from https://aframe.io/docs/1.5.0/components/oculus-touch-controls.html -->
+        <a-entity laser-controls="hand: left"></a-entity> <!--Left hand (controller) has laser, adapted/sourced from https://aframe.io/docs/1.5.0/components/laser-controls.html -->
+      </a-entity>
+      
+      <!--BACKGROUND-->    
       <a-sky src="https://cdn.glitch.me/8cefb064-2b3f-4ee6-95b2-81aed480e217/l4video_v2.mp4?v=1701598882082" rotation="0 -111 0"></a-sky>
       <!-- alternative video   https://cdn.glitch.me/8cefb064-2b3f-4ee6-95b2-81aed480e217/l4video.mp4?v=1701532670186 -->
       
-      <!--Links to other locations-->   
-      <a-sphere id="f3" src="https://cdn.glitch.global/0ecceb09-097f-4efc-83ce-6923956c956e/042_foyerlifts.jpg?v=1699107301856" position="4.5 1 -7"></a-sphere>
+      <!--SPHERES LINKING TO OTHER LOCATIONS -->
+      <a-sphere id="f3" position="4.5 1 -7" radius="1" src="#f3_image"
+        event-set__enter="_event: mouseenter; scale: 1.2 1.2 1.2"
+        event-set__leave="_event: mouseleave; scale: 1 1 1">
+        <a-text font="kelsonsans" value="First Floor Foyer" width="7" position="0 -1.4 0" align="center" look-at="#myCamera"></a-text>
+      </a-sphere>
+       
+      <!--LIFT BUTTONS (OBJECTS FOR VIDEOS)
+      Buttons change colour on hover (except the button for the floor you're currently on) -->
+      <a-plane id="secondfloor" position="-4 -0.2 -1.5" rotation="0 60 0" color="#8C8C8C"
+          event-set__enter="_event: mouseenter; color: #A6A6A6"
+          event-set__leave="_event: mouseleave; color: #8C8C8C">
+          <a-text font="kelsonsans" value="2" width="10" position="0 0 0" align="center" color="#FFFFFF"></a-text>
+      </a-plane>
+            
+      <a-plane id="firstfloor" position="-4 -1.3 -1.5" rotation="0 60 0" color="#8C8C8C">
+          <a-text font="kelsonsans" value="1" width="10" position="0 0 0" align="center" color="#FFFFFF"></a-text>
+      </a-plane>
+
+      <a-plane id="groundfloor" position="-4 -2.4 -1.5" rotation="0 60 0" color="#8C8C8C"
+          event-set__enter="_event: mouseenter; color: #A6A6A6"
+          event-set__leave="_event: mouseleave; color: #8C8C8C">
+          <a-text font="kelsonsans" value="G" width="10" position="0 0 0" align="center" color="#FFFFFF"></a-text>
+      </a-plane>
       
-      <!--Lift buttons-->
-      <a-plane id="f" src="https://cdn.glitch.global/375b0d57-617c-4581-b5fe-45e80f5f1e6a/1.svg?v=1699656391967" position="-4 -1.3 -1.5" rotation="0 60 0"></a-plane>
-      <a-plane id="l5" src="https://cdn.glitch.global/375b0d57-617c-4581-b5fe-45e80f5f1e6a/G.svg?v=1699656389032" position="-4 -2.4 -1.5" rotation="0 60 0"></a-plane>
-      <a-plane id="l6" src="https://cdn.glitch.global/375b0d57-617c-4581-b5fe-45e80f5f1e6a/2.svg?v=1699656396340" position="-4 -0.2 -1.5" rotation="0 60 0"></a-plane>
-      
-      <a-light type="ambient" color="#666"></a-light>
-      <a-light type="point" intensity="" position="2 4 4"></a-light>
-    </a-scene> 
-  
-                     
-      </body>   
-  
-  <script>
-    
-     
-  <!--Navigation to other locations-->    
+    </a-scene>
+  </body>
+
+
+  <!--NAVIGATE TO OTHER PAGES (LOCATIONS/VIDEOS) -->  
+  <script> 
     document
       .querySelector("#f3")
-      .addEventListener("mouseenter", e => {
+      .addEventListener("click", e => {
         location.href = "f3.html";
     });
-    
-
-    <!--videos-->
     document
-      .querySelector("#l5")
-      .addEventListener("mouseenter", e => {
+      .querySelector("#groundfloor")
+      .addEventListener("click", e => {
         location.href = "../videos/l5.html";
     });
-
     document
-      .querySelector("#l6")
-      .addEventListener("mouseenter", e => {
+      .querySelector("#secondfloor")
+      .addEventListener("click", e => {
         location.href = "../videos/l6.html";
     });
-    
   </script>
     
  

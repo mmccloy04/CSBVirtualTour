@@ -7,6 +7,8 @@ you're new to CSS they may seem a little complicated, but you can scroll down
 to this section's matching END comment to see page-specific styles.
 ******************************************************************************/
 /* Our default values set as CSS variables */
+
+
 :root {
   --color-bg: #FFE6F8;
   --color-text-main: #000000;
@@ -39,7 +41,6 @@ to this section's matching END comment to see page-specific styles.
     format("opentype");
 }
 
-/* Our remix on glitch button */
 .btn--one {
   font-family: HK Grotesk;
   padding: 0.75rem 1rem;
@@ -54,14 +55,14 @@ to this section's matching END comment to see page-specific styles.
   box-sizing: border-box;
   border-radius: 4px;
   text-decoration: none;
-  color: #000;
+  color: #000000;
   white-space: nowrap;
   margin-left: auto;
 }
-.btn--remix img {
+.btn--one img {
   margin-right: 0.5rem;
 }
-.btn--remix:hover {
+.btn--one:hover {
   background-color: #D0FFF1;
 }
 
@@ -73,16 +74,16 @@ to this section's matching END comment to see page-specific styles.
   padding: 1rem 0 0.75rem 0;
   width: 100%;
   flex-wrap: wrap;
-  border-top: 4px solid #fff;
+  border-top: 4px solid #ffffff;
 }
 
-.footer a:not(.btn--remix):link,
-a:not(.btn--remix):visited {
+.footer a:not(.btn--one):link,
+a:not(.btn--one):visited {
   font-family: HK Grotesk;
   font-style: normal;
   font-weight: normal;
   font-size: 1.1rem;
-  color: #000;
+  color: #000000;
   text-decoration: none;
   border-style: none;
 }

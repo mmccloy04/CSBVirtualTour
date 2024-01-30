@@ -1,4 +1,4 @@
-<!--NO PHYSICS (IE DYNAMIC/STATIC OBJECTS), BUT WORKS IN VR AND DESKTOP MODE. WAY TO STOP IT CLICKING/STARTING ANIMATION WHEN GRAB BOX?-->
+<!--DYNAMIC OBJECTS, VR MODE ONLY-->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -14,6 +14,8 @@
     <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.misc.min.js"></script> <!-- script for hand controls and animation sourced from https://www.youtube.com/watch?v=vQ85u3dzmZY and https://github.com/c-frame/aframe-super-hands-component-->
     <script src="https://unpkg.com/super-hands@^3.0.3/dist/super-hands.min.js"></script> <!-- script for superhands sourced from https://github.com/c-frame/aframe-super-hands-component-->
     <script src="https://unpkg.com/aframe-event-set-component@5.x.x/dist/aframe-event-set-component.min.js"></script> <!-- script for event set component sourced from https://aframe.io/docs/1.5.0/guides/building-a-360-image-gallery.html -->
+
+    <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-physics-system@v4.2.2/dist/aframe-physics-system.min.js"></script>     <!--script from https://github.com/c-frame/aframe-physics-system/blob/master/CannonDriver.md -->
     
     <!-- CUSTOM COMPONENT
     Registering a custom component to have one entity face another entity (used to make objects face the user)
@@ -60,7 +62,7 @@
   </head>
 
   <body>
-     <a-scene id="scene">
+     <a-scene id="scene" physics="debug:true">
       
       <!--ASSETS-->
       <a-assets>
@@ -76,6 +78,7 @@
       <a-entity>
         <a-camera position="0 1 0" id="myCamera" cursor="rayOrigin: mouse"></a-camera>
         <a-entity 
+            static-body="shape: sphere; sphereRadius: 0.02;"
             sphere-collider="objects: a-plane, a-box, a-sphere" super-hands hand-controls="hand: right"></a-entity>  <!-- Right hand implements hand controls with superhands, adapted/sourced from https://github.com/c-frame/aframe-super-hands-component -->
         <a-entity oculus-touch-controls="hand: left" thumbstick-logging></a-entity> <!--Left hand is the controller, adapted/sourced from https://aframe.io/docs/1.5.0/components/oculus-touch-controls.html -->
         <a-entity laser-controls="hand: left"></a-entity> <!--Left hand (controller) has laser, adapted/sourced from https://aframe.io/docs/1.5.0/components/laser-controls.html -->
@@ -91,7 +94,7 @@
         <a-text font="kelsonsans" value="This way to the\nSecond Floor Foyer" width="7" position="0 -1.5 0" align="center" look-at="#myCamera"></a-text>
       </a-sphere>
       
-      <!--OBJECTS FOR VIDEOS/AUDIO -->
+      <!--OBJECTS FOR VIDEOS/AUDIO-->
       <a-box id="audioimg" position="0 1.4 10" src="#audio_icon" scale="1.2 1.2 1.2"
         event-set__enter="_event: mouseenter; _target: #audioText; visible: true"
         event-set__leave="_event: mouseleave; _target: #audioText; visible: false">
@@ -103,69 +106,70 @@
       <a-box id="task" position="0 1.5 -12" src="#task_icon" scale="1.5 1.5 1.5" rotate="0 120 0"
         event-set__enter="_event: mouseenter; _target: #taskText; visible: true"
         event-set__leave="_event: mouseleave; _target: #taskText; visible: false">
-        <a-text id="taskText" value="Your lecturer has asked you to rotate each of the boxes to work out where you need to go next. (Hint: If you are in VR mode you can grab the boxes with your right hand, otherwise click on the boxes to rotate them)." 
+        <a-text id="taskText" value="Your lecturer has asked you to rotate the boxes to work out where you need to go next. Grab the boxes with your right hand to rotate them.\n(Hint: Be careful not to drop them off the edge of the table! You can click the task button if you need to start again)." 
                 align="center" color="#FFFFFF" width="6.5" font="kelsonsans" 
-                visible="false" position="0.05 2.3 0.5" geometry="primitive: plane;  height: 2; width: 7" material="color: #333333" look-at="#myCamera"></a-text>
+                visible="false" position="0.05 2.3 0.5" geometry="primitive: plane;  height: 3; width: 8" material="color: #333333" look-at="#myCamera"></a-text>
       </a-box>
       
-      <!-- INTERACTIVE SCENARIOS-->     
+      <!-- INTERACTIVE SCENARIOS-->      
        
      <a-entity position="0 0 0" >          
         <a-box
           id="box1"
+          dynamic-body
           grabbable
           draggable
           droppable
-          position="-1.25 0.5 -0.75"
+          position="-1.25 10 -0.75"
           rotation="0 -90 0"
           scale="0.3 0.3 0.3"
-          color="orange"
-          animation__mousedown="property: rotation; to: 0 0 0 ; dur: 1000; startEvents: mousedown" >
+          color="orange">
             <a-text id="text1" font="kelsonsans" value="First" width="5" position="0 0 0.5" align="center" color="#000000"></a-text>     
         </a-box>
 
          <a-box
           id="box2"
+          dynamic-body
           grabbable
           draggable
           droppable
-          position="-0.5 0.5 -0.75"
+          position="-0.5 20 -0.75"
           rotation="90 0 0"
           scale="0.3 0.3 0.3"
-          color="green"
-          animation__mousedown="property: rotation; to: 0 0 0 ; dur: 1000; startEvents: mousedown" >
+          color="green">
             <a-text id="text2" font="kelsonsans" value="Floor" width="5" position="0 0 0.5" align="center" color="#000000"></a-text>     
         </a-box>
 
           <a-box 
           id="box3"
+          dynamic-body
           grabbable
           draggable
           droppable
-          position="0.25 0.5 -0.75"
+          position="0.25 5 -0.75"
           rotation="90 0 90"
           scale="0.3 0.3 0.3"
-          color="blue"
-          animation__mousedown="property: rotation; to: 0 0 0 ; dur: 1000; startEvents: mousedown" >
+          color="blue">
             <a-text id="text3" font="kelsonsans" value="Learning" width="5" position="0 0 0.5" align="center" color="#000000"></a-text>     
         </a-box>
 
         <a-box 
           id="box4"
+          dynamic-body
           grabbable
           draggable
           droppable
-          position="1 0.5 -0.75"
+          position="1 15 -0.75"
           rotation="0 90 0"
           scale="0.3 0.3 0.3"
-          color="red"
-          animation__mousedown="property: rotation; to: 0 0 0 ; dur: 1000; startEvents: mousedown" >
+          color="red">
             <a-text id="text4" font="kelsonsans" value="Lab" width="5" position="0 0 0.5" align="center" color="#000000"></a-text>     
         </a-box>
 
 
         <!--Table - change position for VR mode e.g. height 0.75 -->
         <a-box
+          static-body
           position="0 0 -1"
           width="4.5"
           height="0.5"
@@ -184,6 +188,14 @@
       .addEventListener("click", e => {
         location.href = "s3.html";
     }); 
+
+  
+  <!--RELOAD PAGE WHEN CLICK TASK BOX (e.g. if drop boxes off the table)-->
+    document
+      .querySelector("#task")
+      .addEventListener("click", e => {
+        location.reload();
+    });
 
     
   </script>
