@@ -34,8 +34,14 @@ filer.forEach((f) => {
 });
 
 
+
+//------------MY ADDITIONS------------------
+
 // play audio files (audioFile constant defined in the relevant scripts)
-const playAudio = () => {
-const audio = new Audio(audioFile);
-audio.play();
-};
+//const playAudio = () => {
+//const audio = new Audio(audioFile);
+//audio.play();
+//};
+
+
+
