@@ -1,4 +1,5 @@
-/** Sourced from https://github.com/c-frame/aframe-physics-system/tree/master/examples/components 
+/* JS SCRIPT FOR FORCE-PUSHABLE COMPONENT USED IN Q1.PHP 
+This has been sourced from: https://github.com/c-frame/aframe-physics-system/tree/master/examples/components 
 Example https://github.com/c-frame/aframe-physics-system/blob/master/examples/cannon/stress.html
 
  * Force Pushable component.

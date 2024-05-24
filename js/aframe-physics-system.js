@@ -1,4 +1,5 @@
-/* Sourced from: https://github.com/c-frame/aframe-physics-system/tree/master/dist */
+/* JS SCRIPT FOR A-FRAME PHYSICS SYSTEM USED IN Q1.PHP
+This has been sourced from: https://github.com/c-frame/aframe-physics-system/tree/master/dist */
 
 (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
 var CANNON = require('cannon-es');
@@ -27,7 +28,6 @@ window.CANNON = window.CANNON || CANNON;
 },{"./src/components/ammo-constraint":9,"./src/components/body/ammo-body":10,"./src/components/body/body":11,"./src/components/body/dynamic-body":12,"./src/components/body/static-body":13,"./src/components/constraint":14,"./src/components/math":15,"./src/components/shape/ammo-shape":17,"./src/components/shape/shape":18,"./src/components/spring":19,"./src/system":29,"cannon-es":5}],2:[function(require,module,exports){
 /**
  * CANNON.shape2mesh
- *
  * Source: https://schteppe.github.io/cannon.js/build/cannon.demo.js
  * Author: @schteppe
  */
