@@ -1,3 +1,5 @@
+<!-- INSTRUCTIONS PAGE WHICH LINKS TO THE TWO DIFFERENT TOURS -->
+
 <!--JAVASCRIPT TO SET INITIAL VALUES FOR LOCAL STORAGE VARIABLES 
 Adapted from: https://stackoverflow.com/questions/27765666/passing-variable-through-javascript-from-one-html-page-to-another-page   -->
 <script>
@@ -12,7 +14,6 @@ Adapted from: https://stackoverflow.com/questions/27765666/passing-variable-thro
 <!--PHP TO GET ASSETS FROM DATABASE-->
 <?php
 //PATCH request to update page stats
-$date = date_default_timezone_set("GMT");
 $endpoint = "https://mmccloy04.webhosting5.eeecs.qub.ac.uk/api/statsAPI.php?updatestats";
 $patchdata = http_build_query(
     array(
@@ -48,7 +49,7 @@ if ((sizeof($data) === 0)) {
     //var_dump($data);
     foreach ($data as $row) {
     //ASSIGNING ENTITY INFO TO DYNAMIC VARIABLES
-    //Adapted/sourced from https://www.php.net/manual/en/language.variables.variable.php#:~:text=%24a%20%3D%20'hello'%3B,by%20using%20two%20dollar%20signs.
+    //Adapted/sourced from https://www.php.net/manual/en/language.variables.variable.php
     //ASSET FILEPATH
     $url = $row["entity_ref"]."_asset";               //setting variable name for dynamic variable e.g. entity1_src, entity2_src
     $$url = $row["file_path"];                      //asigning value to variable from current row of array
@@ -81,7 +82,7 @@ if ((sizeof($data) === 0)) {
     <link rel="icon" href="https://mmccloy04.webhosting5.eeecs.qub.ac.uk/assets/images/qublogo.png" /> <!--Queens logo sourced from https://www.stickpng.com/img/icons-logos-emojis/russell-group-universities/queens-university-belfast-logo -->
     <!-- Links to UIkit CSS Framework and my own stylesheet-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.15.12/dist/css/uikit.min.css" /> 
-    <link href="./css/style.css" rel="stylesheet">
+    <link href="./css/mystyle.css" rel="stylesheet">
     <!-- UIkit JS, link to javascript files also required by the framework -->
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.15.12/dist/js/uikit.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.15.12/dist/js/uikit-icons.min.js"></script>
@@ -91,9 +92,9 @@ if ((sizeof($data) === 0)) {
 <body>
 
     <!--HEADER-->
-    <!-- Images sourced from: https://www.qub.ac.uk/schools/eeecs/ -->
+    <!-- QUB Logos sourced from: https://www.qub.ac.uk/schools/eeecs/ -->
     <div class="hide-mobile">
-        <button class="btn--one uk-align-right uk-padding-remove" href="https://www.qub.ac.uk/schools/eeecs/">EEECS HOME</button>
+        <a class="btn--one uk-align-right uk-padding-remove" href="https://www.qub.ac.uk/schools/eeecs/"> EEECS HOME</a>
         <div class="uk-section-1">
             <img src="https://mmccloy04.webhosting5.eeecs.qub.ac.uk/assets/images/qubheader.png">
         </div>
@@ -101,7 +102,7 @@ if ((sizeof($data) === 0)) {
     <div class="hide-nonmobile">
         <div class="uk-section-1-mobile">
             <img src="https://mmccloy04.webhosting5.eeecs.qub.ac.uk/assets/images/qubheader_mobile.jpg">
-            <a class="btn--one uk-padding-remove" href="https://www.qub.ac.uk/schools/eeecs/">&nbsp;&nbsp;&nbsp;EEECS HOME</a>
+            <a class="btn--one uk-padding-remove" href="https://www.qub.ac.uk/schools/eeecs/">EEECS HOME</a>
         </div>
     </div>
 
@@ -115,13 +116,13 @@ if ((sizeof($data) === 0)) {
             Please see further information below.</b>
 
 
-         <!-- GRID-->
+         <!-- GRID - UIkit https://getuikit.com/docs/grid-->
         <div class="uk-container uk-margin-top">
-            <div class="uk-grid-match uk-child-width-1@s uk-text-center" uk-grid>
+            <div class="uk-grid-match uk-child-width-1@s uk-text-center" uk-grid> <!-- responsive width https://getuikit.com/docs/width -->
 
             <!--INTERACTIVE TOUR-->
             <div>
-                <div class='uk-card uk-card-default uk-card-hover'>
+                <div class='uk-card uk-card-default uk-card-hover'> <!-- UIkit card component https://getuikit.com/docs/card -->
                     <div class='uk-card-header'>  
                         <div class="hide-mobile" id="hide-mobile"><h2 class="uk-heading-two">INTERACTIVE TOUR</h2></div>
                         <div class="hide-nonmobile" id="hide-nonmobile"><h2 class="uk-heading-two-mobile">INTERACTIVE TOUR</h2></div>
@@ -137,7 +138,7 @@ if ((sizeof($data) === 0)) {
 
                         <!--ICONS FOR THE INTERACTIVE TOUR-->
                         <div>
-                            <div class="uk-grid-match uk-child-width-1-4@s uk-padding-remove" uk-grid>
+                            <div class="uk-grid-match uk-child-width-1-4@s uk-padding-remove" uk-grid> <!-- responsive width https://getuikit.com/docs/width -->
 
                                 <div>
                                     <div class="uk-card uk-card-body">
@@ -178,11 +179,7 @@ if ((sizeof($data) === 0)) {
             </div>
         </div>
 
-
-
-
-
-
+        
             <!--QUICK TOUR-->
             <div>
                 <div class='uk-card uk-card-default uk-card-hover'>
@@ -195,7 +192,7 @@ if ((sizeof($data) === 0)) {
                     
                         <!--ICON FOR THE QUICK TOUR-->
                         <div>
-                            <div class="uk-grid-match uk-child-width-1-3@s uk-padding-remove" uk-grid>
+                            <div class="uk-grid-match uk-child-width-1-3@s uk-padding-remove" uk-grid> <!-- responsive width https://getuikit.com/docs/width -->
                                 <div>
                                     <div class="uk-card uk-card-body">
                                     </div>
@@ -241,12 +238,13 @@ if ((sizeof($data) === 0)) {
                                             <a href="#toggle-animation1" class="btn--one" uk-toggle="target: #toggle-animation1; cls: uk-hidden">Desktops and Laptops</a><br>
                                         </div>
                                         <div class='uk-card-body'>
-                                            <!-- Image sourced from: https://www.freepik.com/premium-ai-image/laptop-with-red-background-purple-screen-that-says-samsung-it_46782166.htm -->
+                                            <!-- Image sourced from: https://www.freepik.com/premium-ai-image/laptop-with-red-background-purple-screen-that-says-samsung-it_46782166.html -->
                                             <img src="https://mmccloy04.webhosting5.eeecs.qub.ac.uk/assets/images/laptop.jpg" class="uk-height-medium">
                                         </div>
                                         <div class="uk-card-footer">
                                             <div class="uk-hidden" id="toggle-animation1">
-                                            Look around by scrolling with your mouse or trackpad. To hover over an item, place the cursor over the object. To click, please do so using your mouse or trackpad.
+                                            Look around by scrolling with your mouse or trackpad. To hover over an item, place the cursor over the object. 
+                                            To click, please do so using your mouse or trackpad.
                                             </div>
                                         </div>
                                     </div>
@@ -306,20 +304,18 @@ if ((sizeof($data) === 0)) {
 
 
     <!--FOOTER-->
-    <!-- Images sourced from: https://www.qub.ac.uk/schools/eeecs/ 
-    <div class="hide-mobile">
-        <div class="uk-section-3"><img src="https://mmccloy04.webhosting5.eeecs.qub.ac.uk/assets/images/qubfooter3.png" class="uk-height-small"></div>
-    </div>
-    <div class="hide-nonmobile">
-        <div class="uk-section-3-mobile"><img src="https://mmccloy04.webhosting5.eeecs.qub.ac.uk/assets/images/qubfooter3.png" class="uk-height-small"></div>
-    </div>
--->
-
-
+    <!-- Images sourced from: https://www.qub.ac.uk/schools/eeecs/ -->
     <div class="uk-section-3">
-        <img src="https://mmccloy04.webhosting5.eeecs.qub.ac.uk/assets/images/qubfooter.png" class="uk-height-small">
-        <p class="uk-align-right">Queen's University Belfast 2024</p>
+        <div class="hide-mobile">
+            <div><img src="https://mmccloy04.webhosting5.eeecs.qub.ac.uk/assets/images/qubfooter.png" class="uk-height-small"></div>
+            <p class="uk-align-right">Queen's University Belfast 2024</p>
+        </div>
+        <div class="hide-nonmobile">
+        <img src="https://mmccloy04.webhosting5.eeecs.qub.ac.uk/assets/images/qubfooter_mobile.png" >
+            <p class="uk-align-right" >Queen's University Belfast 2024</p>
+        </div>
     </div>
+    
 
 </body>
 

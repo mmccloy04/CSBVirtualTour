@@ -1,3 +1,5 @@
+<!-- ALL OF THE CODE FOR THE QUICK TOUR IS INCLUDED WITHIN THIS PAGE -->
+
 <?php
 //GET request to bring back asset information from database
 $entity_ref = "sky"; //want to bring back the 360 background images/videos used as the sky for each location
@@ -10,7 +12,7 @@ if ((sizeof($data) === 0)) {
  } else {
     foreach ($data as $row) {
     //ASSIGNING ENTITY INFO TO DYNAMIC VARIABLES
-    //Adapted/sourced from https://www.php.net/manual/en/language.variables.variable.php#:~:text=%24a%20%3D%20'hello'%3B,by%20using%20two%20dollar%20signs.
+    //Adapted/sourced from https://www.php.net/manual/en/language.variables.variable.php
     //ASSET FILEPATH
     $url = $row["ref"]."_asset";                  //setting variable name for dynamic variable e.g. o1_sky_asset, o4_sky_asset
     $$url = $row["file_path"];                    //asigning value to variable from current row of array
@@ -36,7 +38,7 @@ if ((sizeof($data) === 0)) {
     <link rel="icon" href="https://mmccloy04.webhosting5.eeecs.qub.ac.uk/assets/images/qublogo.png" /> <!--Queens logo sourced from https://www.stickpng.com/img/icons-logos-emojis/russell-group-universities/queens-university-belfast-logo -->
     <title>EEECS VR Tour</title>
     <link rel="stylesheet" href="/css/style.css" />
-    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+    <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
 
     <!-- CUSTOM COMPONENT
     Registering a custom component to have one entity face another entity (used to make objects face the user)
@@ -73,8 +75,6 @@ if ((sizeof($data) === 0)) {
           spotgroup: { type: "string", default: "" },
         },
         init: function () {
-          //add image source of hotspot icon
-          // this.el.setAttribute("src", "#hotspot");
           //make the icon look at the camera all the time
           this.el.setAttribute("look-at", "#myCamera");
 
@@ -127,20 +127,19 @@ if ((sizeof($data) === 0)) {
     
     <!-- COMPONENT TO ONLY SHOW VR BUTTON IF HEADSET CONNECTED (IE HIDE ON LAPTOP/MOBILE DEVICES)
     Sourced/adapted from https://stackoverflow.com/questions/73669445/how-to-hide-vr-button-unless-vr-headset-is-present-on-a-frame-scene 
-    Updated from to xr-mode-ui based on a-frame 1.5.0, with this also allowing you to specify which buttons to showie AR/VR both
-    https://aframe.io/docs/1.5.0/components/xr-mode-ui.html?#properties_xrmode-->
+    If using A-frame 1.5.0 update from vr-mode-ui to xr-mode-ui , with this also allowing you to specify which buttons to show ie AR/VR both
+    Add in this.el.setAttribute('xr-mode-ui', 'XRMode', 'vr'); to hide AR button  https://aframe.io/docs/1.5.0/components/xr-mode-ui.html?#properties_xrmode-->
     <script>
-      AFRAME.registerComponent('xr-mode-ui-if-headset', {
-        dependencies: ['xr-mode-ui'],
+      AFRAME.registerComponent('vr-mode-ui-if-headset', {
+        dependencies: ['vr-mode-ui'],
         init: function () {
           //if headset not connected then dont display any vr/ar/fullscreen button 
           if (!AFRAME.utils.device.checkHeadsetConnected()) {
-            this.el.setAttribute('xr-mode-ui', 'enabled', false);
+            this.el.setAttribute('vr-mode-ui', 'enabled', false);
             console.log('no VR headset');
           //if headset is connected, display VR button only (not AR)
           } else {
-            this.el.setAttribute('xr-mode-ui', 'enabled', true);
-            this.el.setAttribute('xr-mode-ui', 'XRMode', 'vr'); //hide AR button 
+            this.el.setAttribute('vr-mode-ui', 'enabled', true);
             console.log('VR headset connected');
           }
         }
@@ -150,7 +149,7 @@ if ((sizeof($data) === 0)) {
   
   <body>
     <!--scene linked to component to check if VR headset is connected, VR button will be displayed if so-->
-    <a-scene xr-mode-ui-if-headset>
+    <a-scene vr-mode-ui-if-headset>
       
       <!--ASSETS--> 
       <a-assets>
