@@ -1,0 +1,159 @@
+/* STYLESHEET FOR INDEX PAGE
+Builds on UI Kit CSS Framework https://cdn.jsdelivr.net/npm/uikit@3.15.12/dist/css/uikit.min.css */
+
+
+/* BODY AND SECTIONS */
+body {
+    background-color: white;
+    font-family: HK Grotesk;
+    min-height: 750px;
+    padding: 0px 0px 0px 0px;
+    margin: 0px 0px 0px 0px;
+}
+
+.uk-section-1 {
+    padding: 30px 0px 0px 0px;
+    background-color: #D6000C;
+}
+
+.uk-section-1-mobile {
+    padding: 1px 0px 0px 0px;
+    background-color: #D6000C;
+}
+
+.uk-section-2 {
+    padding: 35px 0px 0px 0px;
+    background-color: whitesmoke;
+    min-height: 495px;
+    max-height: fit-content;
+}
+
+.uk-section-3 {
+    margin: 40px 0px 0px 0px;
+    padding: 10px 10px 10px 10px;
+    background-color: #2F2F2F;
+    color: white;
+    min-height: 200px;
+    max-height: fit-content;
+}
+
+
+
+/* IMPORTING FONTS FROM GLITCH 
+URL: https://hanken.co/products/hk-grotesk 
+HK Grotesk was designed by Hanken Design Co. It is shared using a SIL OFL license. Full license text can be found at: https://hanken.co/pages/web-fonts-eula */
+@font-face {
+    font-family: HK Grotesk;
+    src: url("https://cdn.glitch.me/605e2a51-d45f-4d87-a285-9410ad350515%2FHKGrotesk-Regular.otf?v=1603136326027")
+      format("opentype");
+  }
+  @font-face {
+    font-family: HK Grotesk;
+    font-weight: bold;
+    src: url("https://cdn.glitch.me/605e2a51-d45f-4d87-a285-9410ad350515%2FHKGrotesk-Bold.otf?v=1603136323437")
+      format("opentype");
+  }
+
+
+
+/* GRID CARDS */
+.uk-card-header {
+    padding: 8px 8px 8px 8px;
+    margin: 0px 0px 0px 0px;
+}
+.uk-card-body {
+    padding: 12px 15px 12px 15px;
+    margin: 0px 0px 0px 0px;
+}
+.uk-card-footer {
+    padding: 15px 8px 15px 8px;
+    margin: 0px 0px 0px 0px;
+}
+.uk-card-default {
+    background-color: white;
+}
+.uk-card-primary {
+    background-color: #CDCDCD;
+}
+
+
+/* HEADINGS */
+.uk-heading-one {
+    font-family: HK Grotesk;
+    font-weight: bold;
+    font-size: 40px;
+    color:#222222;
+    text-align: left;
+}
+
+.uk-heading-one-mobile {
+    font-family: HK Grotesk;
+    font-weight: bold;
+    font-size: 30px;
+    color: #222222;
+    text-align: left;
+}
+
+.uk-heading-two {
+    font-family: HK Grotesk;
+    font-weight: bold;
+    font-size: 27px;
+    color:#222222;
+    text-align: center;
+    padding: 0px 0px 0px 0px;
+    margin: 0px 0px 0px 0px;
+}
+
+.uk-heading-two-mobile {
+    font-family: HK Grotesk;
+    font-weight: bold;
+    font-size: 18px;
+    color: #222222;
+    text-align: center;
+    padding: 0px 0px 0px 0px;
+    margin: 0px 0px 0px 0px;
+}
+
+
+/* BUTTONS */
+.btn--one {
+  font-family: HK Grotesk;
+  font-weight: bold;
+  font-size: 18px;
+  color: #FFFFFF;
+  width: 250px;
+  cursor: pointer;
+  background: #D6000C;
+  border: 0px;
+  height: 2.65rem;
+  padding: 0.25rem 1rem;
+}
+.btn--one img {
+  margin-right: 0.5rem;
+}
+.btn--one:hover {
+  background-color: #A4000B;
+}
+
+
+/* CSS TO SHOW/HIDE ELEMENTS BASED ON THE SCREEN SIZE 
+Sourced/adapted from https://www.w3schools.com/css/tryit.asp?filename=trycss_mediaqueries_hide */
+
+/*hide elements for mobile*/
+@media screen and (max-width: 640px) {
+  .hide-mobile {
+      visibility: hidden;
+      display: none;
+  }
+}
+
+/*hide mobile specific elements for larger screens mobile*/
+@media screen and (min-width: 641px) {
+  .hide-nonmobile {
+      visibility: hidden;
+      display: none;
+  }
+}
+
+
+
