@@ -38,3 +38,5 @@ All of the pages in the locations folder are currently used within the Inteactiv
 ← `tests_and_alternatives` and `lift_alternatives`: These folders contain alternative pages and pages used for testing; it was decided to separate out the lift files into the lift_alternatives folder, given there were numerous files of which some inter-relate. None of the pages within these folders are currently used within the tours - some were originally part of the tours but were replaced and moved to these folders following testing, whilst others were specifically created for testing purposes. Please note that sphere links have been disabled within these pages to separate them from the main tour.
 
 The code has been clearly commented throughout and links have been included to indicate where any work from other authors has been sourced/adapted from.
+
+Please note that videos (originally in the assets folder) haven't been uploaded to GitHub due to limitations around the file size.
